@@ -20,6 +20,8 @@ const NAME_ACTION = 'make_name';
 const COLOR_ARGUMENT = 'color';
 const NUMBER_ARGUMENT = 'number';
 
+assistant.tell('Testing' color + number);
+
 // [START SillyNameMaker]
 exports.sillyNameMaker = (req, res) => {
   const assistant = new Assistant({request: req, response: res});
