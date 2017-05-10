@@ -25,9 +25,12 @@ exports.sillyNameMaker = (req, res) => {
   const assistant = new Assistant({request: req, response: res});
   console.log('Request headers: ' + JSON.stringify(req.headers));
   console.log('Request body: ' + JSON.stringify(req.body));
-
-  function saySSML(assistant) {
-  let text_to_speech = '<speak>'
+  
+  // Make a silly name
+  function makeName (assistant) {
+    let number = assistant.getArgument(NUMBER_ARGUMENT);
+    let color = assistant.getArgument(COLOR_ARGUMENT);
+    let text_to_speech = '<speak>'
     + 'Here are <say-as interpret-as="characters">SSML</say-as> samples. '
     + 'I can pause <break time="3"/>. '
     + 'I can play a sound <audio src="https://www.example.com/MY_WAVE_FILE.wav">your wave file</audio>. '
@@ -38,13 +41,7 @@ exports.sillyNameMaker = (req, res) => {
     + 'Finally, I can speak a paragraph with two sentences. '
     + '<p><s>This is sentence one.</s><s>This is sentence two.</s></p>'
     + '</speak>'
-  assistant.tell(text_to_speech);
-};
-  
-  // Make a silly name
-  function makeName (assistant) {
-    let number = assistant.getArgument(NUMBER_ARGUMENT);
-    let color = assistant.getArgument(COLOR_ARGUMENT);
+    assistant.tell(text_to_speech);
     assistant.tell('Alright, your silly name is ' +
       color + ' ' + number +
       '! I hope you like it. See you next time.');
