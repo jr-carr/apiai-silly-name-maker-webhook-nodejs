@@ -27,6 +27,7 @@ exports.sillyNameMaker = (req, res) => {
   console.log('Request headers: ' + JSON.stringify(req.headers));
   console.log('Request body: ' + JSON.stringify(req.body));
   
+  // Testing SSML markups
   function saySSML(assistant) {
     let text_to_speech = '<speak>'
       + 'Here are <say-as interpret-as="characters">SSML</say-as> samples. '
@@ -49,6 +50,15 @@ exports.sillyNameMaker = (req, res) => {
     assistant.tell('Alright, your silly name is ' +
       color + ' ' + number +
       '! I hope you like it. See you next time.');
+  }
+  
+  // Search the Outlet for related documentation
+  function searchOutlet(assistant) {
+    let query = '()';
+    let url = 'https://outlet.ouraes.com/api/core/v3/contents?filter=';
+    let command = url + query;
+    GET command;
+    GET https://outlet.ouraes.com/api/core/v3/contents?filter=search(email);
   }
 
   let actionMap = new Map();
