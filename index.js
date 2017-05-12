@@ -16,6 +16,10 @@
 process.env.DEBUG = 'actions-on-google:*';
 const Assistant = require('actions-on-google').ApiAiAssistant;
 
+const NEWUSERFORM_ACTION = 'newuser_form';
+const ACCOUNT_ARGUMENT = 'accounts';
+const SEARCH_ACTION = 'search';
+const SEARCH_ARGUMENT1 = 'searchterm_1';
 const SSML_ACTION = 'sayssml';
 const NAME_ACTION = 'make_name';
 const COLOR_ARGUMENT = 'color';
@@ -52,6 +56,20 @@ exports.sillyNameMaker = (req, res) => {
       '! I hope you like it. See you next time.');
   }
   
+  // Search the Outlet for new user account form
+  function newUserForm(assistant) {
+    let account = assistant.getArgument(ACCOUNT_ARGUMENT);
+    let searchterm_1 = assistant.getArgument(SEARCH_ARGUMENT1);
+    let query = '(account,searchterm_1)';
+    let url = 'https://outlet.ouraes.com/api/core/v3/contents?filter=';
+    let command = url + query;
+    console.log(command);
+    //let docs = GET command;
+    let docs = GET https://outlet.ouraes.com/api/core/v3/contents?filter=search(webex,form)&count=1&fields=publishDate%2Ccontent%2Csubject;
+    console.log(docs);
+    assistant.tell(docs);
+  }
+  
   // Search the Outlet for related documentation
   function searchOutlet(assistant) {
     let query = '(webex,form)';
@@ -65,6 +83,7 @@ exports.sillyNameMaker = (req, res) => {
   }
 
   let actionMap = new Map();
+  actionMap.set(NEWUSERFORM_ACTION, newUserForm);
   actionMap.set(SSML_ACTION, saySSML);
   actionMap.set(NAME_ACTION, makeName);
 
