@@ -54,11 +54,14 @@ exports.sillyNameMaker = (req, res) => {
   
   // Search the Outlet for related documentation
   function searchOutlet(assistant) {
-    let query = '()';
+    let query = '(webex,form)';
     let url = 'https://outlet.ouraes.com/api/core/v3/contents?filter=';
     let command = url + query;
-    GET command;
-    GET https://outlet.ouraes.com/api/core/v3/contents?filter=search(email);
+    console.log(command);
+    let docs = GET command;
+    //let docs = GET https://outlet.ouraes.com/api/core/v3/contents?filter=search(email);
+    console.log(docs);
+    assistant.tell(docs);
   }
 
   let actionMap = new Map();
