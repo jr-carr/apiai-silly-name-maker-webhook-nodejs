@@ -15,7 +15,7 @@
   },
   "dependencies": {
     "actions-on-google": "^1.0.0",
-    "jive-api-client": "git+https://github.com/shilpakondawar/jive-api-client.git"
+    "jive-api-client": "git+https://github.com/jivesoftware/jive-sdk.git"
   },
   "devDependencies": {
     "semistandard": "^9.1.0"
