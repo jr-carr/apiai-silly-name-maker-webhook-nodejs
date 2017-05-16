@@ -67,15 +67,15 @@ exports.sillyNameMaker = (req, res) => {
     let url = 'https://community.jivesoftware.com/api/core/v3/contents?filter=';
     let command = url + query;
     console.log(command);
-    let docs = GET command;
+    //let docs = GET command;
     api.request({url:"https://community.jivesoftware.com/api/core/v3/contents?filter=search(form)&count=1&fields=publishDate%2Ccontent%2Csubject", method:"GET"})  
      .then(function (content) {  
      console.log("Searched content:", content);},  
      function (err) {  
      console.log(err);});
     //let docs = GET https://outlet.ouraes.com/api/core/v3/contents?filter=search(webex,form)&count=1&fields=publishDate%2Ccontent%2Csubject;
-    console.log(docs);
-    assistant.tell(docs);
+    //console.log(docs);
+    //assistant.tell(docs);
   }
   
   // Search the Outlet for related documentation
