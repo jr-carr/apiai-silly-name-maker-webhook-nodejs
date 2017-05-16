@@ -16,7 +16,7 @@
 process.env.DEBUG = 'actions-on-google:*';
 const Assistant = require('actions-on-google').ApiAiAssistant;
 
-var jive= require('jive-api-client');  
+var jive= require('jive-sdk');  
 var api = jive("https://community.jivesoftware.com"); 
 
 const NEWUSERFORM_ACTION = 'newuser_form';
